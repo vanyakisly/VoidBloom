@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#05070c" />
+  <title>Voidbloom — Planetfall</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="game" aria-label="Voidbloom 3D game"></canvas>
+
+  <section id="landing" class="screen active">
+    <div class="nav"><span class="brand">VOID<span>BLOOM</span></span><span class="build">EXOBIOLOGY DIVISION • BUILD 07</span></div>
+    <div class="hero-copy">
+      <p class="eyebrow">THE SOLAR SYSTEM HAS STARTED DREAMING</p>
+      <h1>Choose a world.<br><i>Survive what chose it first.</i></h1>
+      <p class="intro">Drop into hostile 3D worlds, complete field objectives, and return to the lander before the native giants find you.</p>
+      <div class="mode-actions">
+        <button id="begin" class="primary">SINGLEPLAYER <b>↗</b></button>
+        <button id="multiplayer-btn" class="secondary">MULTIPLAYER <b>◉</b></button>
+      </div>
+      <div class="controls-line"><span>WASD</span> MOVE <span>MOUSE</span> LOOK <span>SHIFT</span> SPRINT <span>E</span> INTERACT</div>
+    </div>
+    <div class="signal-card"><span class="pulse"></span><div><b>UNCLASSIFIED SIGNAL</b><small>Origin changes with every expedition</small></div><strong id="signal-code">V-9Q3</strong></div>
+    <div class="scroll-mark">SCROLL TO DESCEND <span>⌄</span></div>
+  </section>
+
+  <section id="multiplayer" class="screen lobby-screen">
+    <header class="select-head"><button id="back-mp" class="icon-btn">←</button><div><p class="eyebrow">CO-OP UPLINK</p><h2>Multiplayer expedition</h2></div><div id="network-status" class="network-status"><i></i> OFFLINE</div></header>
+    <div id="mp-setup" class="lobby-card">
+      <p class="eyebrow">IDENTITY CHECK</p><h3>Enter the drop network.</h3>
+      <label>CALLSIGN<input id="nickname" maxlength="16" placeholder="EXPLORER" autocomplete="off"></label>
+      <div class="lobby-divider"><span>HOST A NEW ROOM</span></div>
+      <button id="create-room" class="primary wide">CREATE EXPEDITION <b>↗</b></button>
+      <div class="lobby-divider"><span>OR JOIN BY CODE</span></div>
+      <div class="join-row"><input id="room-input" maxlength="6" placeholder="ROOM CODE" autocomplete="off"><button id="join-room" class="secondary">JOIN</button></div>
+      <p id="mp-error" class="mp-error"></p>
+    </div>
+    <div id="room-lobby" class="room-lobby hidden">
+      <div class="room-code-panel"><p class="eyebrow">ROOM CODE</p><strong id="room-code">------</strong><button id="copy-code" class="secondary">COPY CODE</button><small>Share this code with your crew. The lobby has no timer.</small></div>
+      <div class="crew-panel"><div class="crew-head"><div><p class="eyebrow">DROP CREW</p><h3 id="crew-count">1 CONNECTED</h3></div><span id="host-badge">HOST</span></div><div id="crew-list"></div></div>
+      <div class="launch-panel">
+        <label id="world-picker-wrap">DESTINATION<select id="world-picker"></select></label>
+        <p id="lobby-message">Waiting for the host to begin the expedition.</p>
+        <button id="start-room" class="primary wide">START EXPEDITION <b>↗</b></button>
+        <button id="leave-room" class="secondary wide">LEAVE ROOM</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="select" class="screen">
+    <header class="select-head"><button id="backLanding" class="icon-btn">←</button><div><p class="eyebrow">ORBITAL NAVIGATION</p><h2>Select landing zone</h2></div><div class="threat-key"><i></i> THREAT INDEX</div></header>
+    <div id="planet-list" class="planet-list" role="list"></div>
+    <aside id="planet-detail" class="planet-detail">
+      <p class="eyebrow">TARGET PROFILE</p>
+      <h3 id="detail-name">MARS</h3>
+      <p id="detail-type" class="detail-type">THE RED WASTE</p>
+      <div class="stats">
+        <div><span>DIAMETER</span><b id="detail-size">6,779 KM</b></div>
+        <div><span>GRAVITY</span><b id="detail-gravity">0.38 G</b></div>
+        <div><span>THREAT</span><b id="detail-threat">SEVERE</b></div>
+      </div>
+      <p id="detail-lore" class="lore"></p>
+      <button id="launch" class="primary wide">INITIATE PLANETFALL <b>↗</b></button>
+      <small class="warning">⚠ LANDING VOIDS ALL EARTHSIDE INSURANCE</small>
+    </aside>
+  </section>
+
+  <section id="hud" class="screen hud">
+    <div class="hud-top">
+      <div class="mission-panel"><p class="eyebrow">EXPEDITION OBJECTIVES</p><h2 id="world-name">WORLD</h2><div id="objectives"></div></div>
+      <div class="status-panel"><div><span>SUIT</span><b id="health-text">100</b></div><div class="bar"><i id="health-bar"></i></div><small id="atmosphere">ATMOSPHERE: TOXIC</small></div>
+    </div>
+    <div id="prompt" class="prompt">E&nbsp;&nbsp; INTERACT</div>
+    <div id="danger" class="danger"><b>PROXIMITY ALERT</b><span>SOMETHING LARGE IS MOVING NEARBY</span></div>
+    <div class="hud-bottom"><div class="radar"><i></i><span>N</span><b id="range">CLEAR</b></div><div class="controls-help">WASD MOVE&nbsp;&nbsp; • &nbsp;&nbsp;SHIFT SPRINT&nbsp;&nbsp; • &nbsp;&nbsp;E INTERACT&nbsp;&nbsp; • &nbsp;&nbsp;ESC RELEASE MOUSE</div><button id="abort" class="abort">ABORT EXPEDITION</button></div>
+    <div class="crosshair">·</div>
+  </section>
+
+  <section id="result" class="modal-wrap">
+    <div class="modal"><p id="result-kicker" class="eyebrow">EXPEDITION COMPLETE</p><h2 id="result-title">Samples secured.</h2><p id="result-copy"></p><div class="modal-actions"><button id="again" class="primary">NEW EXPEDITION</button><button id="same" class="secondary">REPLAY WORLD</button></div></div>
+  </section>
+
+  <div id="loading"><span></span><b>CALCULATING DROP VECTOR</b></div>
+  <div id="flash"></div>
+  <script src="vendor/peerjs.min.js"></script>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
