@@ -42,9 +42,17 @@ Player movement, shared objectives, monster positions, and the crew roster are s
 
 Complete all three field objectives, avoid the procedurally assembled creatures, and return to the lander alive.
 
+## Graphics modes
+
+Use the button in the upper-right corner of the title screen:
+
+- **Cinematic Graphics** — dynamic flashlight and moon shadows, volumetric flashlight beam, detailed geometry, full PBR normal/roughness/bump mapping, dense particles, film grain, and lightning.
+- **Performance Mode** — designed for very low-end PCs. It lowers internal resolution, disables dynamic shadows and expensive material maps, simplifies terrain and creature geometry, reduces rocks and particles, and removes post-processing grain. Gameplay and multiplayer behavior remain unchanged.
+
 ## Included art
 
 - Rocky Terrain PBR maps by Amal Kumar / Poly Haven — CC0
 - Alien and Astronaut models by Quaternius — CC0
+- Alien skin diffuse texture generated specifically for this project with OpenAI image generation
 
 The terrain uses local albedo, OpenGL normal, roughness, and displacement maps. Models and textures are bundled with the site; no third-party art server is required during play.
