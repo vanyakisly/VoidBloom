@@ -34,9 +34,17 @@ Player movement, shared objectives, monster positions, and the crew roster are s
 ## Controls
 
 - **WASD** — Move
-- **Mouse** — Look
+- **Mouse** — First-person look
 - **Shift** — Sprint
+- **F** — Toggle flashlight
 - **E** — Interact
 - **Esc** — Release the mouse
 
 Complete all three field objectives, avoid the procedurally assembled creatures, and return to the lander alive.
+
+## Included art
+
+- Rocky Terrain PBR maps by Amal Kumar / Poly Haven — CC0
+- Alien and Astronaut models by Quaternius — CC0
+
+The terrain uses local albedo, OpenGL normal, roughness, and displacement maps. Models and textures are bundled with the site; no third-party art server is required during play.

@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#05070c" />
+  <link rel="icon" href="data:," />
   <title>Voidbloom — Planetfall</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -15,12 +16,12 @@
     <div class="hero-copy">
       <p class="eyebrow">THE SOLAR SYSTEM HAS STARTED DREAMING</p>
       <h1>Choose a world.<br><i>Survive what chose it first.</i></h1>
-      <p class="intro">Drop into hostile 3D worlds, complete field objectives, and return to the lander before the native giants find you.</p>
+      <p class="intro">Enter hostile worlds in first person, follow your flashlight through the dark, and finish the fieldwork before the native giants find you.</p>
       <div class="mode-actions">
         <button id="begin" class="primary">SINGLEPLAYER <b>↗</b></button>
         <button id="multiplayer-btn" class="secondary">MULTIPLAYER <b>◉</b></button>
       </div>
-      <div class="controls-line"><span>WASD</span> MOVE <span>MOUSE</span> LOOK <span>SHIFT</span> SPRINT <span>E</span> INTERACT</div>
+      <div class="controls-line"><span>WASD</span> MOVE <span>MOUSE</span> LOOK <span>SHIFT</span> SPRINT <span>F</span> FLASHLIGHT <span>E</span> INTERACT</div>
     </div>
     <div class="signal-card"><span class="pulse"></span><div><b>UNCLASSIFIED SIGNAL</b><small>Origin changes with every expedition</small></div><strong id="signal-code">V-9Q3</strong></div>
     <div class="scroll-mark">SCROLL TO DESCEND <span>⌄</span></div>
@@ -74,7 +75,7 @@
     </div>
     <div id="prompt" class="prompt">E&nbsp;&nbsp; INTERACT</div>
     <div id="danger" class="danger"><b>PROXIMITY ALERT</b><span>SOMETHING LARGE IS MOVING NEARBY</span></div>
-    <div class="hud-bottom"><div class="radar"><i></i><span>N</span><b id="range">CLEAR</b></div><div class="controls-help">WASD MOVE&nbsp;&nbsp; • &nbsp;&nbsp;SHIFT SPRINT&nbsp;&nbsp; • &nbsp;&nbsp;E INTERACT&nbsp;&nbsp; • &nbsp;&nbsp;ESC RELEASE MOUSE</div><button id="abort" class="abort">ABORT EXPEDITION</button></div>
+    <div class="hud-bottom"><div class="radar"><i></i><span>N</span><b id="range">CLEAR</b></div><div class="controls-help">WASD MOVE&nbsp;&nbsp; • &nbsp;&nbsp;SHIFT SPRINT&nbsp;&nbsp; • &nbsp;&nbsp;F FLASHLIGHT&nbsp;&nbsp; • &nbsp;&nbsp;E INTERACT&nbsp;&nbsp; • &nbsp;&nbsp;ESC RELEASE MOUSE</div><button id="abort" class="abort">ABORT EXPEDITION</button></div>
     <div class="crosshair">·</div>
   </section>
 
@@ -85,6 +86,7 @@
   <div id="loading"><span></span><b>CALCULATING DROP VECTOR</b></div>
   <div id="flash"></div>
   <script src="vendor/peerjs.min.js"></script>
+  <script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
   <script type="module" src="game.js"></script>
 </body>
 </html>
